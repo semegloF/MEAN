@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+  <div *ngFor="let friandise of friandisesList$ | async">
+
+      <div class="col">
+
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"> {{friandise.title}}</h5>
+
+      <div [ngStyle]="{color:getSoldValue(friandise)}">
+
+<span  *ngIf="friandise.category =='choco'">Essayez cette friandise chocolatée de:</span>
+<span  *ngIf="friandise.category =='chips'">Essayez ces croustilles délicieuses de:</span>
+      </div>
+
+      <p class="card-text">{{friandise.cie}}</p>
+      <p class="card-text">Prix: {{friandise.price}} $ </p>
+
+
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
+</div>

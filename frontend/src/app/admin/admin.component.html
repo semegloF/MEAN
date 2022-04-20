@@ -1,0 +1,97 @@
+<hr><h1>Gestion de l'inventaire</h1>
+<br/>
+<div class="container">
+  <div class="row">
+<div class="card">
+  <div class="col-12 col-sm-6 col-md-8 col-lg-12 col-xl-12">
+  <img src="/assets/Images/rick.gif" />
+
+  <img class="d-none d-sm-block" id="yy" src="/assets/Images/logo.png">
+
+  <button type="button" id="x" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+    🍬Nouvelle friandises🍬
+  </button></div>
+  <br/>
+
+<div *ngFor="let friandise of friandisesList$ | async">
+
+	  <div class="col-12 col-sm-4 col-md-8 col-lg-12 col-xl-12">
+
+    <div  class="card-header">{{friandise.title}}  <button  type="button" data-toggle="modal" data-target="#exampleModall" id ="y" class="btn btn-danger"  (click)="onDelete(friandise)" >🗑</button>
+    </div>
+  </div>
+
+   <br/>
+
+
+
+    </div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exempleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <form [formGroup]="friandisesForm" (ngSubmit)="onSubmitFriandisesForm()">
+
+<div class="modal-header">
+  <h5 class="modal-title text-dark" id="exampleModalCenterTitle">Ajout de friandises</h5>
+   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+   </button>
+</div>
+ <div class="modal-body">
+  <div class="form-group">
+<input type="text" placeholder="Title" class="form-control" formControlName="title">
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Catégorie</label>
+  </div>
+<select class="custom-select" id="inputGroupSelect01" formControlName="category">
+
+<option value="chips">Chips</option>
+<option value="choco">Barre chocolats</option>
+</select>
+</div>
+
+<div class="form-row">
+<div class="form-group col-12">
+<input type="text" placeholder="Compagnie" class="form-control" formControlName="cie">
+</div>
+</div>
+
+<div class="form-group">
+  <input type="text" placeholder="Prix" class="form-control" formControlName="price">
+</div>
+</div>
+
+    <div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+<button type="submit" [disabled]="friandisesForm.invalid" class="btn btn-primary"> Ajouter a l'inventaire</button>
+<button type="button" [routerLink]="['/home']"  class="btn btn-secondary" data-dismiss="modal">Accueil</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="exempleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+<div class="modal-header">
+  <h5 class="modal-title text-dark" id="exampleModalCenterTitle">Ajout avec succès !</h5>
+   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+   </button>
+</div>
+
+    <div class="modal-footer">
+<button type="button" [routerLink]="['/home']"  class="btn btn-secondary" data-dismiss="modal">Okey</button>
+
+</div>
+
+</div>
+</div>
+</div>

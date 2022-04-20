@@ -1,0 +1,11 @@
+h2 {
+	text-align: center;
+	color:black;
+}
+
+
+ .image{
+  height:80em; background-size:cover; width:auto;
+  background-image:url('Images/back.jpg');
+  background-position:50% 50%;
+}
